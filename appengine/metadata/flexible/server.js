@@ -36,7 +36,7 @@ function getExternalIp () {
   return request(METADATA_NETWORK_INTERFACE_URL, options)
     .then((response) => response.body)
     .catch((err) => {
-      if (err || err.statusCode !== 200) {
+      if (err && err.statusCode !== 200) {
         console.log('Error while talking to metadata server, assuming localhost');
         return 'localhost';
       }
